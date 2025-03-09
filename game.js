@@ -12,6 +12,10 @@ function ajustaTamanhoJogo() {
 
 ajustaTamanhoJogo();
 
+function posicaoRandomica() {
+  // Remover nave anterior se existe
+  document.getElementById('nave') ? document.getElementById('nave').remove() : {}
+
   // Gerando posição aleatória para spawn da nave
   let posicaoX = Math.floor(Math.random() * largura) - 90;
   let posicaoY = Math.floor(Math.random() * altura) - 90;
@@ -29,22 +33,27 @@ ajustaTamanhoJogo();
   nave.style.left = posicaoX + "px";
   nave.style.top = posicaoY + "px";
   nave.style.position = "absolute";
+  nave.id = "nave";
 
   document.body.appendChild(nave);
 
-  console.log(tamanhoAleatorio())
+  console.log(tamanhoAleatorio());
+}
 
+setInterval(() => {
+  posicaoRandomica();
+}, 1000);
 
 function tamanhoAleatorio() {
   let classe = Math.floor(Math.random() * 3);
-  
-// Não precisa de break por conta do return
-  switch(classe) {
+
+  // Não precisa de break por conta do return
+  switch (classe) {
     case 0:
-        return 'nave'
-    case 1: 
-        return 'nave1'
+      return "nave";
+    case 1:
+      return "nave1";
     case 2:
-        return 'nave2'
+      return "nave2";
   }
 }
