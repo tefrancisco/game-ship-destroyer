@@ -1,3 +1,8 @@
+body {
+    background-image: url(imagens/background.png);
+    background-repeat: no-repeat;
+}
+
 .nave {
     width: 50px;
     height: 50px;
@@ -11,4 +16,25 @@
 .nave2{
     width: 90px;
     height: 90px;
+}
+
+.painel {
+    position: absolute;
+    width: 190px;
+    padding: 10px;
+    bottom: 0px;
+    left: 0;
+    background-color: #fff;
+    border-top: 1px #fff;
+    opacity: 0.7;
+}
+
+.vidas {
+    float: left;
+}
+
+.cronometro {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
 }
