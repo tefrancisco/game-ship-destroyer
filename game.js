@@ -20,7 +20,7 @@ function posicaoRandomica() {
     document.getElementById('nave').remove()
 
     if(vidas > 2) {
-        window.alert('AAAAAAAAAAAAAAA')
+        window.location.href = 'fim_de_jogo.html'
     }
 
     else {
