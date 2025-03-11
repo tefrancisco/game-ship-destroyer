@@ -4,6 +4,7 @@ let altura = window.innerHeight;
 let largura = window.innerWidth;
 let vidas = 0
 let coracoes = document.getElementsByClassName('coracoes')
+let tempo = 10
 
 // Ao mudar o tamanho da janela, redeclarar as variáveis
 function ajustaTamanhoJogo() {
@@ -13,6 +14,22 @@ function ajustaTamanhoJogo() {
 }
 
 ajustaTamanhoJogo();
+
+document.getElementById('cronometro').innerHTML = tempo
+
+let cronometro = setInterval(() => {
+    tempo--
+
+    if(tempo < 0) {
+      clearInterval(cronometro)
+      clearInterval(criaNave)
+      window.location.href = 'vitoria.html'
+    }
+    else {
+      document.getElementById('cronometro').innerHTML = tempo
+    }
+    
+}, 1000)
 
 function posicaoRandomica() {
   // Remover nave anterior se existe
@@ -56,7 +73,7 @@ function posicaoRandomica() {
   console.log(tamanhoAleatorio());
 }
 
-setInterval(() => {
+let criaNave = setInterval(() => {
   posicaoRandomica();
 }, 2000);
 
