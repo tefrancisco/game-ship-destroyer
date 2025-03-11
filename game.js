@@ -4,7 +4,25 @@ let altura = window.innerHeight;
 let largura = window.innerWidth;
 let vidas = 0
 let coracoes = document.getElementsByClassName('coracoes')
-let tempo = 10
+let tempo = 15
+
+let criaNaveTempo = 1500
+
+// Recupera a url e o search corta só para depois do ?
+let dificuldade = window.location.search.replace('?', '')
+console.log(dificuldade)
+
+if(dificuldade === 'normal') {
+  criaNaveTempo = 1500
+}
+
+else if(dificuldade === 'dificil') {
+  criaNaveTempo = 1000
+}
+
+else {
+  criaNaveTempo = 750
+}
 
 // Ao mudar o tamanho da janela, redeclarar as variáveis
 function ajustaTamanhoJogo() {
@@ -14,6 +32,12 @@ function ajustaTamanhoJogo() {
 }
 
 ajustaTamanhoJogo();
+
+function iniciarJogo() {
+  let nivel = document.getElementById('nivel').value
+
+  nivel === '' ? alert("Selecione um nível para iniciar o jogo!") : window.location.href = 'index.html?' + nivel
+}
 
 document.getElementById('cronometro').innerHTML = tempo
 
@@ -75,7 +99,7 @@ function posicaoRandomica() {
 
 let criaNave = setInterval(() => {
   posicaoRandomica();
-}, 2000);
+}, criaNaveTempo);
 
 function tamanhoAleatorio() {
   let classe = Math.floor(Math.random() * 3);
